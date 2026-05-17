@@ -154,6 +154,15 @@ class DashboardData:
                     })
             except Exception:
                 pass
+        
+        # Detect if bot is running by checking for recent log activity
+        if log_files:
+            latest_log = log_files[0]
+            mtime = latest_log.stat().st_mtime
+            age_seconds = time.time() - mtime
+            # If log was modified in last 30 seconds, bot is likely running
+            is_recently_active = age_seconds < 30
+            self.session_data["running"] = is_recently_active and not self.session_data.get("stopped", False)
     
     def _reload_trades(self):
         """Reload trades from latest CSV."""

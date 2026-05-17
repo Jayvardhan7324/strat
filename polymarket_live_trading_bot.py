@@ -172,7 +172,12 @@ def setup_logging(config: dict):
             logging.FileHandler(log_file),
             logging.StreamHandler(sys.stdout),
         ],
+        force=True,
     )
+    import io
+    for h in logging.root.handlers:
+        if isinstance(h, logging.StreamHandler) and not isinstance(h, logging.FileHandler):
+            h.stream = io.TextIOWrapper(h.stream.buffer, encoding="utf-8", errors="replace")
     return log_file
 
 

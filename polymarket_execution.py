@@ -174,7 +174,7 @@ class SessionRiskManager:
                 self.stopped = True
                 reason = f"SESSION SOFT STOP: PnL ${self.session_pnl:.2f} (limit: ${self.config['session_soft_stop']:.2f})"
                 self.stop_reason = reason
-                self.logger.warning(f"🟡 {reason}")
+                self.logger.warning(f"[WARN] {reason}")
                 return True, reason
             
             # Hard stop
@@ -182,13 +182,13 @@ class SessionRiskManager:
                 self.stopped = True
                 reason = f"SESSION HARD STOP: PnL ${self.session_pnl:.2f} (limit: ${self.config['session_hard_stop']:.2f})"
                 self.stop_reason = reason
-                self.logger.error(f"🔴 {reason}")
+                self.logger.error(f"[HARD STOP] {reason}")
                 return True, reason
             
             # Nuclear stop
             if self.session_pnl <= -self.config["nuclear_stop"]:
                 self.stopped = True
-                reason = f"🚨 NUCLEAR STOP: PnL ${self.session_pnl:.2f} — EMERGENCY HALT"
+                reason = f"[NUCLEAR] NUCLEAR STOP: PnL ${self.session_pnl:.2f} -- EMERGENCY HALT"
                 self.stop_reason = reason
                 self.logger.critical(reason)
                 return True, reason
@@ -198,7 +198,7 @@ class SessionRiskManager:
                 self.stopped = True
                 reason = f"MAX DRAWDOWN: {self.max_drawdown:.2%} (limit: {self.config['max_drawdown_pct']:.2%})"
                 self.stop_reason = reason
-                self.logger.error(f"🔴 {reason}")
+                self.logger.error(f"[DRAWDOWN] {reason}")
                 return True, reason
             
             # Max trades
@@ -206,7 +206,7 @@ class SessionRiskManager:
                 self.stopped = True
                 reason = f"MAX TRADES REACHED: {self.session_trades}"
                 self.stop_reason = reason
-                self.logger.info(f"📊 {reason}")
+                self.logger.info(f"[INFO] {reason}")
                 return True, reason
             
             return False, ""
@@ -530,7 +530,7 @@ class PolymarketTrader:
     def start(self):
         """Start the trading bot."""
         self.running = True
-        self.logger.log_info("🔴 Trading bot STARTED")
+        self.logger.log_info("[START] Trading bot STARTED")
         
         # Start heartbeat
         if self.main_loop_thread is None or not self.main_loop_thread.is_alive():
@@ -652,7 +652,7 @@ class PolymarketTrader:
         """Log heartbeat with status."""
         status = self.risk_manager.get_status()
         self.logger.log_info(
-            f"💗 HEARTBEAT | PnL: ${status['session_pnl']:.2f} | "
+            f"[HEARTBEAT] PnL: ${status['session_pnl']:.2f} | "
             f"Trades: {status['session_trades']} | "
             f"Capital: ${status['current_capital']:.2f} | "
             f"DD: {status['max_drawdown_pct']:.2%}"
@@ -660,14 +660,14 @@ class PolymarketTrader:
     
     def _handle_stop(self):
         """Handle session stop."""
-        self.logger.log_info("🛑 Session stop triggered — halting trading")
+        self.logger.log_info("[STOP] Session stop triggered -- halting trading")
         self.running = False
         status = self.risk_manager.get_status()
         self.logger.log_info(f"Final status: {json.dumps(status, indent=2, default=str)}")
     
     def stop(self):
         """Stop the trading bot."""
-        self.logger.log_info("⏹️ Stopping trading bot...")
+        self.logger.log_info("[STOP] Stopping trading bot...")
         self.running = False
         
         if self.main_loop_thread and self.main_loop_thread.is_alive():
@@ -678,7 +678,7 @@ class PolymarketTrader:
         self.logger.close()
         self.api.close()
         
-        self.logger.log_info("✅ Trading bot stopped")
+        self.logger.log_info("[OK] Trading bot stopped")
     
     def get_status(self) -> Dict[str, Any]:
         """Get current bot status."""

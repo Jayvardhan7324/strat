@@ -168,8 +168,9 @@ class TradeLogger:
                 "%(asctime)s | %(levelname)-8s | %(message)s"
             ))
             
-            # Console handler
+            # Console handler (force UTF-8 to support emojis on Windows)
             console_handler = logging.StreamHandler()
+            console_handler.encoding = "utf-8"
             console_handler.setFormatter(logging.Formatter(
                 "%(asctime)s | %(levelname)-8s | %(message)s"
             ))
