@@ -51,7 +51,7 @@ DEFAULT_CONFIG = {
     # Mode and identity
     "mode": "paper",
     "symbol": "BTC",
-    "condition_id": " BTC",  # Will be discovered
+    "condition_id": "BTC",  # Will be discovered
     
     # Capital
     "starting_capital": 10000.0,
@@ -550,7 +550,6 @@ class PolymarketTrader:
                 # Update session stops
                 should_stop, reason = self.risk_manager.check_stops()
                 if should_stop:
-                    self.logger.log_warning(f"STOP TRIGGERED: {reason}")
                     self._handle_stop()
                     break
                 
@@ -590,7 +589,7 @@ class PolymarketTrader:
                 
                 current_price = market_data["last_price"]
                 open_price = prices[0][1] if prices else current_price
-                time_frac = min(time.time() - market_data["last_update"], 300) / 300
+                time_frac = min(market_data.get("age_seconds", 300), 300) / 300
                 
                 # Evaluate strategy
                 should_trade, side, confidence, filters, metadata = self.strategy.evaluate(
@@ -621,9 +620,12 @@ class PolymarketTrader:
                 )
                 
                 if result.get("status") == "FILLED":
-                    # Calculate simulated P&L (paper mode simplification)
-                    pnl = result["fee"]  # Simplified, actual would depend on market outcome
-                    self.risk_manager.update(-abs(pnl))  # Count fee as loss for simplicity
+                    entry_price = result["price"]
+                    exit_price = 1.0 if side == "UP" else 0.0
+                    shares = self.config["stake_per_trade"] / entry_price
+                    payout = shares * exit_price if side == "UP" else shares * (1 - exit_price)
+                    pnl = payout - self.config["stake_per_trade"] - result["fee"]
+                    self.risk_manager.update(pnl)
                     
                     trade = TradeEntry(
                         trade_id=result["trade_id"],
@@ -712,9 +714,9 @@ def main():
         "mode": args.mode,
         "starting_capital": args.capital,
         "stake_per_trade": args.stake,
-        "session_soft_stop": -abs(args.soft_stop),  # Convert to loss amount
-        "session_hard_stop": -abs(args.hard_stop),
-        "nuclear_stop": -abs(args.nuclear_stop),
+        "session_soft_stop": args.soft_stop,
+        "session_hard_stop": args.hard_stop,
+        "nuclear_stop": args.nuclear_stop,
         "max_trades_per_session": args.max_trades,
         "log_dir": args.log_dir,
     }

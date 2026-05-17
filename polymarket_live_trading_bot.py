@@ -100,9 +100,10 @@ class RiskState:
         else:
             self.session_losses += 1
         # Drawdown
-        if self.session_pnl + self.peak_capital > self.peak_capital:
-            self.peak_capital = self.session_pnl + self.peak_capital
-        dd = self.peak_capital - (self.session_pnl + self.peak_capital)
+        current_capital = self.config["starting_capital"] + self.session_pnl
+        if current_capital > self.peak_capital:
+            self.peak_capital = current_capital
+        dd = (self.peak_capital - current_capital) / self.peak_capital
         if dd > self.max_drawdown:
             self.max_drawdown = dd
 
@@ -378,11 +379,13 @@ class LiveTradingBot:
         outcome = 1 if (side == "UP" and spot_price >= open_price) or (side == "DOWN" and spot_price < open_price) else 0
 
         # Simulate PnL
+        entry_price = 0.50
         stake = self.config["stake_per_trade"]
+        fee = stake * self.config["taker_fee"]
         if outcome == 1:
-            gross = stake * 1.0  # Win = full payout
-            fee = stake * self.config["taker_fee"]
-            pnl = gross - stake - fee
+            shares = stake / entry_price
+            payout = shares * 1.0
+            pnl = payout - stake - fee
         else:
             pnl = -stake  # Lose full stake
 
