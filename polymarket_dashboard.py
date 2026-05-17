@@ -356,7 +356,11 @@ def create_app(config: Dict = None) -> Tuple[Flask, SocketIO, DashboardData]:
     @app.route("/")
     def index():
         """Main dashboard page."""
-        return render_template_string(DASHBOARD_HTML, config=config)
+        result = data.refresh()
+        is_running = result.get("session", {}).get("running", False)
+        last_update_ts = result.get("stats", {}).get("last_update", 0)
+        last_update_str = datetime.fromtimestamp(last_update_ts).strftime("%H:%M:%S") if last_update_ts else "Never"
+        return render_template_string(DASHBOARD_HTML, config=config, is_running=is_running, last_update=last_update_str)
     
     @app.route("/api/debug")
     def debug_info():
