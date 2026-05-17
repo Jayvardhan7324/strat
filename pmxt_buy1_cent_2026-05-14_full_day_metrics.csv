@@ -1,0 +1,2 @@
+date_utc,markets_seen,opportunities,wins,losses,win_rate,break_even_win_rate_no_fee,break_even_win_rate_0_2pct_taker_fee,profitable_vs_0_2pct_fee_break_even
+2026-05-14,288,290,4,286,0.013793103448275862,0.01,0.01002,True

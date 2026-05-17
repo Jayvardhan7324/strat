@@ -1,0 +1,415 @@
+{
+  "chop_direction_predictor": {
+    "n_trades": 6079,
+    "n_sims": 20000,
+    "confidence_level": 0.95,
+    "observed": {
+      "total_return_pct": 24451.252726771036,
+      "win_rate": 71.16302023359106,
+      "pnl_per_trade": 402.2249173675117,
+      "max_drawdown_pct": 25.878884837065886,
+      "sharpe": 35.080295059381186,
+      "profit_factor": 2.3920392373707253
+    },
+    "monte_carlo": {
+      "total_return_pct": {
+        "mean": 24452.98796179941,
+        "std": 701.089652863375,
+        "median": 24451.62510376086,
+        "p_low": 23071.47908563115,
+        "p_high": 25815.19565777111
+      },
+      "max_drawdown_pct": {
+        "mean": 18.76507735855144,
+        "std": 9.59956982716592,
+        "median": 16.78205396622774,
+        "p_low": 7.5249051998702585,
+        "p_high": 44.5432318292954
+      },
+      "sharpe": {
+        "mean": 35.09421421576485,
+        "std": 1.2179040162325088,
+        "median": 35.08068240570678,
+        "p_low": 32.72426527321228,
+        "p_high": 37.48946314682983
+      },
+      "win_rate": {
+        "mean": 71.16447195262379,
+        "std": 0.5844611013726834,
+        "median": 71.16302023359106,
+        "p_low": 70.01151505181772,
+        "p_high": 72.29807534133904
+      },
+      "profit_factor": {
+        "mean": 2.3935903023021563,
+        "std": 0.06822448689874741,
+        "median": 2.3920604372407985,
+        "p_low": 2.2630514662190238,
+        "p_high": 2.5299090451976753
+      }
+    },
+    "prob_return_gt_0pct": 1.0,
+    "prob_return_gt_50pct": 1.0,
+    "prob_return_gt_100pct": 1.0,
+    "prob_drawdown_gt_20pct": 0.34105,
+    "prob_drawdown_gt_30pct": 0.1097,
+    "prob_ruin": 0.00015,
+    "avg_win": 971.2508720936438,
+    "avg_loss": -1002.0,
+    "worst_loss": -1002.0
+  },
+  "buy1_cent": {
+    "n_trades": 53679,
+    "n_sims": 20000,
+    "confidence_level": 0.95,
+    "observed": {
+      "total_return_pct": 60431.364199999996,
+      "win_rate": 12.259915423163621,
+      "pnl_per_trade": 112.57915423163621,
+      "max_drawdown_pct": 131.11277500055485,
+      "sharpe": 79.52677720942481,
+      "profit_factor": 13.805372354361301
+    },
+    "monte_carlo": {
+      "total_return_pct": {
+        "mean": 60437.7702,
+        "std": 762.0562903444093,
+        "median": 60431.36420000001,
+        "p_low": 58951.36420000001,
+        "p_high": 61931.36420000001
+      },
+      "max_drawdown_pct": {
+        "mean": 1.7297763772474282,
+        "std": 0.709945399583753,
+        "median": 1.5801954779394718,
+        "p_low": 0.8196599248281323,
+        "p_high": 3.5105175385736405
+      },
+      "sharpe": {
+        "mean": 79.5305868030762,
+        "std": 0.6067874713192539,
+        "median": 79.52677720942482,
+        "p_low": 78.34345568046983,
+        "p_high": 80.7161551311633
+      },
+      "win_rate": {
+        "mean": 12.261108813502487,
+        "std": 0.14196544092557786,
+        "median": 12.259915423163621,
+        "p_low": 11.984202388271019,
+        "p_high": 12.539354309879098
+      },
+      "profit_factor": {
+        "mean": 13.80719876614206,
+        "std": 0.18219974895846153,
+        "median": 13.805372354361301,
+        "p_low": 13.452630234599168,
+        "p_high": 14.165150528796714
+      }
+    },
+    "prob_return_gt_0pct": 1.0,
+    "prob_return_gt_50pct": 1.0,
+    "prob_return_gt_100pct": 1.0,
+    "prob_drawdown_gt_20pct": 0.0,
+    "prob_drawdown_gt_30pct": 0.0,
+    "prob_ruin": 0.0,
+    "avg_win": 989.9799999999997,
+    "avg_loss": -10.019999999999996,
+    "worst_loss": -10.02
+  },
+  "chop_scalper_v1": {
+    "n_trades": 3520,
+    "n_sims": 20000,
+    "confidence_level": 0.95,
+    "observed": {
+      "total_return_pct": -809.1003472042585,
+      "win_rate": 8.72159090909091,
+      "pnl_per_trade": -22.985805318302795,
+      "max_drawdown_pct": 810.3948079896583,
+      "sharpe": -72.30853316289463,
+      "profit_factor": 0.04950226243902253
+    },
+    "monte_carlo": {
+      "total_return_pct": {
+        "mean": -809.2147490574484,
+        "std": 11.156436125416965,
+        "median": -809.2037513377286,
+        "p_low": -831.2729310126863,
+        "p_high": -787.4425431247562
+      },
+      "max_drawdown_pct": {
+        "mean": 810.7252358068694,
+        "std": 11.317040188650985,
+        "median": 810.676804795843,
+        "p_low": 788.6514988647803,
+        "p_high": 833.1910604782779
+      },
+      "sharpe": {
+        "mean": -72.39064541743488,
+        "std": 2.011940403896612,
+        "median": -72.39934542760054,
+        "p_low": -76.37271564715633,
+        "p_high": -68.47226317859763
+      },
+      "win_rate": {
+        "mean": 8.718640625,
+        "std": 0.47375016493827216,
+        "median": 8.72159090909091,
+        "p_low": 7.8125,
+        "p_high": 9.659090909090908
+      },
+      "profit_factor": {
+        "mean": 0.04948524498418063,
+        "std": 0.004499162802547512,
+        "median": 0.04937954052234922,
+        "p_low": 0.040938194121386044,
+        "p_high": 0.058608595617383484
+      }
+    },
+    "prob_return_gt_0pct": 0.0,
+    "prob_return_gt_50pct": 0.0,
+    "prob_return_gt_100pct": 0.0,
+    "prob_drawdown_gt_20pct": 1.0,
+    "prob_drawdown_gt_30pct": 1.0,
+    "prob_ruin": 1.0,
+    "avg_win": 13.725809684256118,
+    "avg_loss": -26.493575565979604,
+    "worst_loss": -123.98373576229392
+  },
+  "chop_scalper_v2": {
+    "n_trades": 3300,
+    "n_sims": 20000,
+    "confidence_level": 0.95,
+    "observed": {
+      "total_return_pct": -639.1855135307826,
+      "win_rate": 8.727272727272728,
+      "pnl_per_trade": -19.369257985781292,
+      "max_drawdown_pct": 640.929088050126,
+      "sharpe": -78.77398264597838,
+      "profit_factor": 0.06569952043032504
+    },
+    "monte_carlo": {
+      "total_return_pct": {
+        "mean": -639.2238975160313,
+        "std": 8.193618162697497,
+        "median": -639.3054447095245,
+        "p_low": -655.1494815009765,
+        "p_high": -623.0646337191075
+      },
+      "max_drawdown_pct": {
+        "mean": 640.1675821174324,
+        "std": 8.27974233076938,
+        "median": 640.2079261839071,
+        "p_low": 623.7133518702908,
+        "p_high": 656.2642544121624
+      },
+      "sharpe": {
+        "mean": -78.90205184766045,
+        "std": 2.993540314596862,
+        "median": -78.83238964404191,
+        "p_low": -84.88383162877244,
+        "p_high": -73.1581743379636
+      },
+      "win_rate": {
+        "mean": 8.728339393939395,
+        "std": 0.49583466800976017,
+        "median": 8.727272727272728,
+        "p_low": 7.757575757575758,
+        "p_high": 9.727272727272727
+      },
+      "profit_factor": {
+        "mean": 0.0657128079500909,
+        "std": 0.005738786077956623,
+        "median": 0.06557502000411677,
+        "p_low": 0.05489619290429339,
+        "p_high": 0.0775037365944912
+      }
+    },
+    "prob_return_gt_0pct": 0.0,
+    "prob_return_gt_50pct": 0.0,
+    "prob_return_gt_100pct": 0.0,
+    "prob_drawdown_gt_20pct": 1.0,
+    "prob_drawdown_gt_30pct": 1.0,
+    "prob_ruin": 1.0,
+    "avg_win": 15.60666339240678,
+    "avg_loss": -22.71356919325744,
+    "worst_loss": -43.7045905871415
+  },
+  "buy97_sell99": {
+    "n_trades": 17928,
+    "n_sims": 20000,
+    "confidence_level": 0.95,
+    "observed": {
+      "total_return_pct": 612.3049631760948,
+      "win_rate": 89.4355198572066,
+      "pnl_per_trade": 3.4153556625172623,
+      "max_drawdown_pct": 9.503818901837667,
+      "sharpe": 71.25025313135308,
+      "profit_factor": 4.226413925981696
+    },
+    "monte_carlo": {
+      "total_return_pct": {
+        "mean": 612.2692733358359,
+        "std": 8.657878713613194,
+        "median": 612.2737090768985,
+        "p_low": 595.3053636186615,
+        "p_high": 629.208506442939
+      },
+      "max_drawdown_pct": {
+        "mean": 0.3410191144818248,
+        "std": 0.07469629675841467,
+        "median": 0.3277177672034196,
+        "p_low": 0.24030317880588656,
+        "p_high": 0.5273778728672037
+      },
+      "sharpe": {
+        "mean": 71.25128234544661,
+        "std": 1.1966978718487518,
+        "median": 71.25677212282278,
+        "p_low": 68.90638043902364,
+        "p_high": 73.60861963983125
+      },
+      "win_rate": {
+        "mean": 89.43451333110218,
+        "std": 0.22861890035331653,
+        "median": 89.4355198572066,
+        "p_low": 88.97813476126728,
+        "p_high": 89.87617135207496
+      },
+      "profit_factor": {
+        "mean": 4.2281379728061355,
+        "std": 0.10744155106720063,
+        "median": 4.2265156228351,
+        "p_low": 4.022639437349655,
+        "p_high": 4.445727455703761
+      }
+    },
+    "prob_return_gt_0pct": 1.0,
+    "prob_return_gt_50pct": 1.0,
+    "prob_return_gt_100pct": 1.0,
+    "prob_drawdown_gt_20pct": 0.0,
+    "prob_drawdown_gt_30pct": 0.0,
+    "prob_ruin": 0.0,
+    "avg_win": 5.002393433803761,
+    "avg_loss": -10.019999999999998,
+    "worst_loss": -10.02
+  },
+  "prev10_momentum": {
+    "n_trades": 14639,
+    "n_sims": 20000,
+    "confidence_level": 0.95,
+    "observed": {
+      "total_return_pct": 67.6276455445545,
+      "win_rate": 52.93394357538084,
+      "pnl_per_trade": 0.4619690248278878,
+      "max_drawdown_pct": 3.821550029230627,
+      "sharpe": 5.6548888866871705,
+      "profit_factor": 1.0979574168709811
+    },
+    "monte_carlo": {
+      "total_return_pct": {
+        "mean": 67.65786336633668,
+        "std": 12.025029769923579,
+        "median": 67.62764554455451,
+        "p_low": 44.06328910891094,
+        "p_high": 91.19200198019809
+      },
+      "max_drawdown_pct": {
+        "mean": 3.9070875669406653,
+        "std": 1.1093570169553433,
+        "median": 3.6973244449318505,
+        "p_low": 2.3549655510433287,
+        "p_high": 6.6398677693552095
+      },
+      "sharpe": {
+        "mean": 5.658111685329149,
+        "std": 1.0083840226099032,
+        "median": 5.654888886687171,
+        "p_low": 3.681449627921366,
+        "p_high": 7.63361789119411
+      },
+      "win_rate": {
+        "mean": 52.93498599631123,
+        "std": 0.41482615163682,
+        "median": 52.93394357538084,
+        "p_low": 52.12104651957101,
+        "p_high": 53.74684063119065
+      },
+      "profit_factor": {
+        "mean": 1.0981645307341776,
+        "std": 0.018288594885082873,
+        "median": 1.0979574168709811,
+        "p_low": 1.0627412447311269,
+        "p_high": 1.1344114340808826
+      }
+    },
+    "prob_return_gt_0pct": 1.0,
+    "prob_return_gt_50pct": 0.93005,
+    "prob_return_gt_100pct": 0.0033,
+    "prob_drawdown_gt_20pct": 0.0,
+    "prob_drawdown_gt_30pct": 0.0,
+    "prob_ruin": 0.0,
+    "avg_win": 9.781980198019799,
+    "avg_loss": -10.019999999999998,
+    "worst_loss": -10.02
+  },
+  "live_guarded_v1": {
+    "n_trades": 14,
+    "n_sims": 20000,
+    "confidence_level": 0.95,
+    "observed": {
+      "total_return_pct": 1999.3936838440156,
+      "win_rate": 100.0,
+      "pnl_per_trade": 14281.383456028683,
+      "max_drawdown_pct": 0.0,
+      "sharpe": 5.271833224953397,
+      "profit_factor": null
+    },
+    "monte_carlo": {
+      "total_return_pct": {
+        "mean": 1998.3920369085324,
+        "std": 364.09178268372347,
+        "median": 1985.5654060619588,
+        "p_low": 1317.8823820524285,
+        "p_high": 2736.5697687706256
+      },
+      "max_drawdown_pct": {
+        "mean": 0.0,
+        "std": 0.0,
+        "median": 0.0,
+        "p_low": 0.0,
+        "p_high": 0.0
+      },
+      "sharpe": {
+        "mean": 5.638178821975135,
+        "std": 1.0303848162131481,
+        "median": 5.50775126926119,
+        "p_low": 4.022536708840735,
+        "p_high": 8.02552501577191
+      },
+      "win_rate": {
+        "mean": 100.0,
+        "std": 0.0,
+        "median": 100.0,
+        "p_low": 100.0,
+        "p_high": 100.0
+      },
+      "profit_factor": {
+        "mean": 0.0,
+        "std": 0.0,
+        "median": 0.0,
+        "p_low": 0.0,
+        "p_high": 0.0
+      }
+    },
+    "prob_return_gt_0pct": 1.0,
+    "prob_return_gt_50pct": 1.0,
+    "prob_return_gt_100pct": 1.0,
+    "prob_drawdown_gt_20pct": 0.0,
+    "prob_drawdown_gt_30pct": 0.0,
+    "prob_ruin": 0.0,
+    "avg_win": 14281.383456028683,
+    "avg_loss": 0.0,
+    "worst_loss": 0.0
+  }
+}

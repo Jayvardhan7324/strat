@@ -1,0 +1,2 @@
+max_ask,markets_seen,opportunities,wins,losses,win_rate,break_even_win_rate_no_fee,profitable_vs_no_fee_break_even
+0.01,12,12,0,12,0.0,0.01,False

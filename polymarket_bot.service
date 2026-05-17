@@ -1,0 +1,30 @@
+[Unit]
+Description=Polymarket Live Trading Bot
+After=network.target
+
+[Service]
+Type=simple
+User=trading_bot
+WorkingDirectory=/opt/polymarket_bot
+Environment=PYTHONPATH=/opt/polymarket_bot
+Environment=POLYMARKET_MODE=paper
+Environment=POLYMARKET_CONFIG=/opt/polymarket_bot/live_config.json
+
+# Run the bot
+ExecStart=/opt/polymarket_bot/venv/bin/python /opt/polymarket_bot/polymarket_live_trading_bot.py --mode paper --config /opt/polymarket_bot/live_config.json
+
+# Restart on failure
+Restart=on-failure
+RestartSec=10
+
+# Resource limits
+MemoryMax=512M
+CPUQuota=50%
+
+# Logging
+StandardOutput=journal
+StandardError=journal
+SyslogIdentifier=polymarket_bot
+
+[Install]
+WantedBy=multi-user.target
