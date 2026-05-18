@@ -8,10 +8,10 @@ User=trading_bot
 WorkingDirectory=/opt/polymarket_bot
 Environment=PYTHONPATH=/opt/polymarket_bot
 Environment=POLYMARKET_MODE=paper
-Environment=POLYMARKET_CONFIG=/opt/polymarket_bot/live_config.json
+Environment=POLYMARKET_CONFIG=/opt/polymarket_bot/config/live_config.json
 
 # Run the bot
-ExecStart=/opt/polymarket_bot/venv/bin/python /opt/polymarket_bot/polymarket_live_trading_bot.py --mode paper --config /opt/polymarket_bot/live_config.json
+ExecStart=/opt/polymarket_bot/venv/bin/python -m core.polymarket_live_trading_bot --mode paper --config /opt/polymarket_bot/config/live_config.json
 
 # Restart on failure
 Restart=on-failure

@@ -25,7 +25,7 @@ from sklearn.neural_network import MLPClassifier
 from sklearn.ensemble import RandomForestClassifier
 from sklearn.preprocessing import StandardScaler
 
-from polymarket_updown_backtest import (
+from backtests.polymarket_updown_backtest import (
     STARTING_CAPITAL,
     TAKER_FEE_RATE,
     Window,

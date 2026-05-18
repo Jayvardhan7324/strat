@@ -4,7 +4,7 @@
 
 ### 1. Configure
 
-Edit `live_config.json`:
+Edit `config/live_config.json`:
 ```json
 {
   "mode": "paper",          // Start with paper mode
@@ -20,10 +20,10 @@ Edit `live_config.json`:
 
 ```bash
 # Windows PowerShell
-.\run_polymarket_bot.ps1
+.\scripts\run_polymarket_bot.ps1
 
 # Linux/macOS
-python polymarket_live_trading_bot.py --mode paper --config live_config.json
+python -m core.polymarket_live_trading_bot --mode paper --config config/live_config.json
 ```
 
 ### 3. View Logs
@@ -72,7 +72,7 @@ No credentials needed for public archive URLs.
 
 ```bash
 # Copy service file
-sudo cp polymarket_bot.service /etc/systemd/system/
+sudo cp scripts/polymarket_bot.service /etc/systemd/system/
 
 # Enable and start
 sudo systemctl daemon-reload
@@ -130,7 +130,7 @@ with open('live_logs/session_summary.json') as f:
 
 | Issue | Solution |
 |-------|----------|
-| Bot not starting | Check `live_config.json` exists and is valid JSON |
+| Bot not starting | Check `config/live_config.json` exists and is valid JSON |
 | No trades | Check filters are not too strict; lower thresholds in config |
 | Stopped early | Check which stop triggered; review logs |
 | API errors | Verify credentials; check rate limits |
@@ -140,16 +140,25 @@ with open('live_logs/session_summary.json') as f:
 
 ```
 .
-├── polymarket_live_trading_bot.py   ← Main bot
-├── live_config.json                  ← Config
-├── run_polymarket_bot.ps1           ← Windows launcher
-├── polymarket_bot.service           ← systemd service
-├── live_logs/                        ← Logs output
+├── core/                              ← Core trading system
+│   ├── polymarket_live_trading_bot.py    ← Main bot
+│   ├── polymarket_api_client.py          ← API client
+│   ├── polymarket_execution.py           ← Strategy engine
+│   └── polymarket_dashboard.py           ← Web dashboard
+├── config/
+│   └── live_config.json                ← Config
+├── scripts/
+│   ├── run_polymarket_bot.ps1          ← Windows launcher
+│   └── polymarket_bot.service          ← systemd service
+├── tests/
+│   └── test_live_bot.py               ← Test script
+├── live_logs/                          ← Logs output
 │   ├── live_trading_*.log
 │   ├── trades.csv
 │   └── session_summary.json
-├── test_live_bot.py                  ← Test script
-└── DEPLOYMENT_GUIDE.md              ← This file
+├── docs/
+│   └── DEPLOYMENT_GUIDE.md            ← This file
+└── README.md
 ```
 
 ## Support

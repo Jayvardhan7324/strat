@@ -16,58 +16,90 @@ Production-ready trading system for Polymarket crypto up/down markets with real-
 
 ```
 strats/
-├── polymarket_api_client.py      # Polymarket API client (Gamma + CLOB)
-├── polymarket_logging.py         # Trade journaling and analytics
-├── polymarket_execution.py       # Strategy engine and execution
-├── polymarket_dashboard.py       # Web monitoring dashboard
-├── polymarket_trading_system.py  # Main system orchestrator
-├── live_config.json              # Configuration file
-├── test_system.py                # System test script
-└── README.md                     # This file
+├── core/                         # Core trading system
+│   ├── polymarket_api_client.py      # Polymarket API client (Gamma + CLOB)
+│   ├── polymarket_execution.py       # Strategy engine and execution
+│   ├── polymarket_logging.py         # Trade journaling and analytics
+│   ├── polymarket_dashboard.py       # Web monitoring dashboard
+│   ├── polymarket_trading_system.py  # Main system orchestrator
+│   └── polymarket_live_trading_bot.py# Live trading bot
+├── backtests/                    # Backtesting scripts & library
+│   ├── polymarket_updown_backtest.py # Backtesting library (most imported)
+│   ├── backtest_buy1_cent.py
+│   ├── backtest_buy97_sell99.py
+│   ├── live_guarded_backtest.py
+│   └── ...
+├── strategies/                   # Trading strategy implementations
+│   ├── scalping_research.py
+│   ├── sequential_hedge_strategy.py
+│   ├── enhanced_buy97_strategies.py
+│   └── ...
+├── ml/                           # Machine learning models
+├── analysis/                     # Data analysis & risk tools
+├── utils/                        # Utility scripts (datasets, helpers)
+├── tests/                        # Test scripts
+├── config/                       # Configuration files
+│   └── live_config.json
+├── scripts/                      # Launch/deploy scripts
+├── docs/                         # Documentation
+├── requirements.txt
+└── README.md
 ```
 
 ## Installation
 
 ### Prerequisites
 
-- Python 3.8+
+- Python 3.10+
 - Polymarket account (for live trading)
 
 ### Install Dependencies
 
 ```bash
-pip install flask flask-socketio plotly pandas numpy requests
+pip install -r requirements.txt
 ```
 
 ## Quick Start
+
+> **Note:** Always run commands from the project root directory. Use `python -m <module>` syntax for scripts in subdirectories.
 
 ### Paper Trading Mode (Recommended First)
 
 ```bash
 # Start with dashboard
-python polymarket_trading_system.py --mode paper --dashboard
+python -m core.polymarket_trading_system --mode paper --dashboard
 
 # Or without dashboard
-python polymarket_trading_system.py --mode paper
+python -m core.polymarket_trading_system --mode paper
 ```
 
 ### Live Trading Mode
 
 ```bash
 # Start live trading with dashboard
-python polymarket_trading_system.py --mode live --dashboard --capital 10000
+python -m core.polymarket_trading_system --mode live --dashboard --capital 10000
 ```
 
 ### Dashboard Only
 
 ```bash
 # Start dashboard with existing log data
-python polymarket_dashboard.py --log-dir ./live_logs --host 127.0.0.1 --port 5000
+python -m core.polymarket_dashboard --log-dir ./live_logs --host 127.0.0.1 --port 5000
+```
+
+### Running Backtests
+
+```bash
+# Run a backtest
+python -m backtests.backtest_buy1_cent
+
+# Or run from the directory directly
+cd backtests && python backtest_buy1_cent.py
 ```
 
 ## Configuration
 
-Edit `live_config.json` or use CLI arguments:
+Edit `config/live_config.json` or use CLI arguments:
 
 ```json
 {
@@ -86,7 +118,7 @@ Edit `live_config.json` or use CLI arguments:
 ### CLI Options
 
 ```bash
-python polymarket_trading_system.py --help
+python -m core.polymarket_trading_system --help
 
 Options:
   --mode          Trading mode: paper or live (default: paper)
@@ -180,7 +212,7 @@ The system generates comprehensive reports including:
 
 ## API Keys
 
-For live trading, add your Polymarket API credentials to `live_config.json`:
+For live trading, add your Polymarket API credentials to `config/live_config.json`:
 
 ```json
 {
@@ -228,7 +260,7 @@ For issues or questions:
 
 1. Check the logs in `./live_logs/`
 2. Review the dashboard debug endpoint: `http://127.0.0.1:5000/api/debug`
-3. Run the test script: `python test_system.py`
+3. Run the test script: `python -m tests.test_system`
 
 ## License
 

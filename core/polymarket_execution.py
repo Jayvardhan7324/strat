@@ -478,9 +478,9 @@ class PolymarketTrader:
                 self.config.update(json.load(f))
         self.config.update(kwargs)
         
-        # Override with live_config.json if exists
-        if Path("live_config.json").exists():
-            with open("live_config.json") as f:
+        # Override with config/live_config.json if exists
+        if Path("config/live_config.json").exists():
+            with open("config/live_config.json") as f:
                 self.config.update(json.load(f))
         
         # Initialize components
@@ -697,7 +697,7 @@ class PolymarketTrader:
 def main():
     parser = argparse.ArgumentParser(description="Polymarket Live Trading Bot")
     parser.add_argument("--mode", choices=["paper", "live"], default="paper", help="Trading mode")
-    parser.add_argument("--config", default="live_config.json", help="Config file path")
+    parser.add_argument("--config", default="config/live_config.json", help="Config file path")
     parser.add_argument("--capital", type=float, default=10000.0, help="Starting capital")
     parser.add_argument("--stake", type=float, default=10.0, help="Stake per trade")
     parser.add_argument("--soft-stop", type=float, default=500.0, help="Soft stop limit")

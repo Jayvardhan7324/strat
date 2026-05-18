@@ -36,6 +36,8 @@ ENV/
 # Logs and data
 live_logs/
 live_logs_demo/
+pmxt_buy1_cent_available_hourly/
+__pycache__/
 *.log
 *_trades.csv
 *_signals.csv
@@ -45,10 +47,24 @@ session_summary.json
 dashboard_output.txt
 dashboard_stdout.txt
 dashboard_stderr.txt
+dashboard_error.txt
 
-# Test files
-test_*.py
-debug_*.py
+# Generated backtest CSVs
+*_metrics.csv
+*_survival.csv
+*_best_trades.csv
+*_sweep_test.csv
+*_sweep_train.csv
+*_feature_importance.csv
+*_model.txt
+
+# Generated images
+*.png
+*.jpg
+
+# Generated summary/report files
+*_SUMMARY.md
+*_RESULTS.md
 
 # OS
 .DS_Store

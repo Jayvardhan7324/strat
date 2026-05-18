@@ -36,7 +36,7 @@ try:
 except ImportError:
     HAS_LGB = False
 
-from polymarket_updown_backtest import (
+from backtests.polymarket_updown_backtest import (
     STARTING_CAPITAL,
     TAKER_FEE_RATE,
     WINDOW_SECONDS,

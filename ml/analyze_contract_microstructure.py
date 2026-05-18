@@ -13,7 +13,7 @@ from __future__ import annotations
 import numpy as np
 import pandas as pd
 
-from polymarket_updown_backtest import (
+from backtests.polymarket_updown_backtest import (
     WINDOW_SECONDS,
     Window,
     build_windows,

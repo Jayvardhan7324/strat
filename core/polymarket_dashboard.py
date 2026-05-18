@@ -18,7 +18,6 @@ Author: OpenCode AI
 
 from __future__ import annotations
 
-import json
 import os
 import sys
 import glob
@@ -866,10 +865,10 @@ DASHBOARD_HTML = '''
                 document.getElementById('capital').textContent = formatMoney(s.current_capital || 10000);
                 document.getElementById('pf').textContent = (s.profit_factor || 0).toFixed(2);
                 
-                // Stops
-                document.getElementById('soft_stop').textContent = formatMoney(500);
-                document.getElementById('hard_stop').textContent = formatMoney(1000);
-                document.getElementById('nuclear_stop').textContent = formatMoney(2000);
+                // Stops - Use dynamic values from session data with defaults
+                document.getElementById('soft_stop').textContent = formatMoney(s.session_soft_stop || 500);
+                document.getElementById('hard_stop').textContent = formatMoney(s.session_hard_stop || 1000);
+                document.getElementById('nuclear_stop').textContent = formatMoney(s.nuclear_stop || 2000);
             }
             
             // Update charts

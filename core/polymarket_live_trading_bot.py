@@ -92,7 +92,7 @@ class RiskState:
     stop_reason: str = ""
     trade_log: list = field(default_factory=list)
 
-    def update(self, pnl: float):
+    def update(self, pnl: float, starting_capital: float = 10000.0):
         self.session_pnl += pnl
         self.session_trades += 1
         if pnl > 0:
@@ -100,7 +100,7 @@ class RiskState:
         else:
             self.session_losses += 1
         # Drawdown
-        current_capital = self.config["starting_capital"] + self.session_pnl
+        current_capital = starting_capital + self.session_pnl
         if current_capital > self.peak_capital:
             self.peak_capital = current_capital
         dd = (self.peak_capital - current_capital) / self.peak_capital

@@ -7,7 +7,7 @@ detailed performance statistics.
 
 import random
 import math
-from sequential_hedge_strategy import SequentialHedgeStrategy
+from strategies.sequential_hedge_strategy import SequentialHedgeStrategy
 
 
 def generate_price_scenarios():

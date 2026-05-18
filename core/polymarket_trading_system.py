@@ -31,7 +31,7 @@ from typing import Optional, Dict, Any
 # Configuration
 # ---------------------------------------------------------------------------
 
-CONFIG_FILE = "polymarket_config.json"
+CONFIG_FILE = "config/live_config.json"
 
 
 def create_default_config() -> Dict[str, Any]:
@@ -271,7 +271,7 @@ Examples:
     parser.add_argument("--mode", choices=["paper", "live"], default="paper",
                         help="Trading mode (default: paper)")
     parser.add_argument("--config", default=CONFIG_FILE,
-                        help="Configuration file (default: polymarket_config.json)")
+                        help="Configuration file (default: config/live_config.json)")
     parser.add_argument("--capital", type=float, default=10000.0,
                         help="Starting capital (default: $10,000)")
     parser.add_argument("--stake", type=float, default=10.0,

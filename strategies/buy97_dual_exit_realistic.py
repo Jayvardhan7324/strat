@@ -18,7 +18,7 @@ import numpy as np
 import pandas as pd
 from scipy.stats import norm
 
-from polymarket_updown_backtest import (
+from backtests.polymarket_updown_backtest import (
     STARTING_CAPITAL,
     TAKER_FEE_RATE,
     Window,
